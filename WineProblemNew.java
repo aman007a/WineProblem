@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,8 +29,13 @@ public class WineProblemNew {
         int wineSold = 0;
         HashMap<String,ArrayList<String>> finalList = new HashMap<>();
         
-        File file = new File("https://s3.amazonaws.com/br-user/puzzles/person_wine_3.txt");
-        BufferedReader br = new BufferedReader(new FileReader(file));
+//		File file = new File("https://s3.amazonaws.com/br-user/puzzles/person_wine_3.txt");
+//		BufferedReader br = new BufferedReader(new FileReader(file));
+//        
+        URL url = new URL("https://s3.amazonaws.com/br-user/puzzles/person_wine_3.txt");
+        BufferedReader br = new BufferedReader(
+        new InputStreamReader(url.openStream()));
+        
         String line;
         while((line = br.readLine()) != null){
             String[] nameAndWine = line.split("\\s");
